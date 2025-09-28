@@ -17,4 +17,9 @@
 
 
     }
+
+    public class CreateThingFromResponse
+    {
+        public string name = string.Empty;
+    }
 }
