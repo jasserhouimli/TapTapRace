@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36408.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "taptaprace.client", "taptaprace.client\taptaprace.client.esproj", "{01AF3E0A-0143-7621-BA69-DE60A927F3A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TapTapRace.Server", "TapTapRace.Server\TapTapRace.Server.csproj", "{43AF77A0-A053-481F-8A46-3D1D81BDDA6E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01AF3E0A-0143-7621-BA69-DE60A927F3A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01AF3E0A-0143-7621-BA69-DE60A927F3A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01AF3E0A-0143-7621-BA69-DE60A927F3A2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{01AF3E0A-0143-7621-BA69-DE60A927F3A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01AF3E0A-0143-7621-BA69-DE60A927F3A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01AF3E0A-0143-7621-BA69-DE60A927F3A2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{43AF77A0-A053-481F-8A46-3D1D81BDDA6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43AF77A0-A053-481F-8A46-3D1D81BDDA6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43AF77A0-A053-481F-8A46-3D1D81BDDA6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43AF77A0-A053-481F-8A46-3D1D81BDDA6E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {43747F78-F7D2-44CE-9D9C-6284EB8D087C}
+	EndGlobalSection
+EndGlobal
