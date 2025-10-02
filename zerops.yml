@@ -1,0 +1,44 @@
+# ZeroOps configuration for TapTapRace
+# Documentation: https://docs.zeroops.io/
+
+version: 1
+
+services:
+  backend:
+    type: dotnet
+    project: TapTapRace.Server/TapTapRace.Server.csproj
+    env:
+      ASPNETCORE_ENVIRONMENT: Development
+    ports:
+      - 5000:5000
+    build:
+      context: ./TapTapRace.Server
+    run:
+      command: dotnet TapTapRace.Server.dll
+    healthcheck:
+      path: /swagger/index.html
+      interval: 30s
+      timeout: 5s
+
+  frontend:
+    type: node
+    project: taptaprace.client
+    env:
+      NODE_ENV: development
+    ports:
+      - 5173:5173
+    build:
+      context: ./taptaprace.client
+      command: npm install && npm run build
+    run:
+      command: npm run dev
+    healthcheck:
+      path: /
+      interval: 30s
+      timeout: 5s
+
+dependencies:
+  - backend
+  - frontend
+
+# Optional: Add volumes, secrets, or additional configuration as needed.
