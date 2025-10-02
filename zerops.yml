@@ -1,44 +1,71 @@
-# ZeroOps configuration for TapTapRace
-# Documentation: https://docs.zeroops.io/
-
-version: 1
-
-services:
-  backend:
-    type: dotnet
-    project: TapTapRace.Server/TapTapRace.Server.csproj
-    env:
-      ASPNETCORE_ENVIRONMENT: Development
-    ports:
-      - 5000:5000
+# Zerops configuration for TapTapRace
+zerops:
+  - setup: dotnet
+    # ==== how to build your application ====
     build:
-      context: ./TapTapRace.Server
-    run:
-      command: dotnet TapTapRace.Server.dll
-    healthcheck:
-      path: /swagger/index.html
-      interval: 30s
-      timeout: 5s
+      # what technologies should the build
+      # container be based on (can be an array)
+      base: dotnet@9
 
-  frontend:
-    type: node
-    project: taptaprace.client
-    env:
-      NODE_ENV: development
-    ports:
-      - 5173:5173
+      # build your application
+      buildCommands:
+        - dotnet build TapTapRace.Server/TapTapRace.Server.csproj -o app
+
+      # select which files / folders to deploy
+      # after the build successfully finished
+      # `~` can be used to mark starting point
+      # of deploy path, this example would deploy
+      # files in app folder without the folder
+      # itself
+      deployFiles: app/~
+
+    # ==== how to run your application ====
+    run:
+      # what technology should the runtime
+      # container be based on, can be extended
+      # in `run.prepareCommands` using
+      # `sudo zsc install nodejs@20`
+      base: dotnet@9
+
+      # what ports your app listens on
+      # and whether it supports http traffic
+      ports:
+        - port: 5000
+          httpSupport: true
+
+      # how to start your application
+      start: dotnet TapTapRace.Server.dll
+
+  - setup: nodejs
+    # ==== how to build your application ====
     build:
-      context: ./taptaprace.client
-      command: npm install && npm run build
+      # what technologies should the build
+      # container be based on (can be an array)
+      base: nodejs@20
+
+      # build your application
+      buildCommands:
+        - npm ci
+        - npm run build
+
+      # select which files / folders to deploy
+      # after the build successfully finished
+      deployFiles:
+        - dist
+        - package.json
+        - node_modules
+
+    # ==== how to run your application ====
     run:
-      command: npm run dev
-    healthcheck:
-      path: /
-      interval: 30s
-      timeout: 5s
+      # what technology should the runtime
+      # container be based on
+      base: nodejs@20
 
-dependencies:
-  - backend
-  - frontend
+      # what ports your app listens on
+      # and whether it supports http traffic
+      ports:
+        - port: 5173
+          httpSupport: true
 
-# Optional: Add volumes, secrets, or additional configuration as needed.
+      # how to start your application
+      start: npm run preview
