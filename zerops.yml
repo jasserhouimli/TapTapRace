@@ -9,7 +9,8 @@ zerops:
 
       # build your application
       buildCommands:
-        - dotnet build TapTapRace.Server/TapTapRace.Server.csproj -o app
+        - cd TapTapRace.Server
+        - dotnet publish TapTapRace.Server.csproj -c Release -o ../app --no-restore
 
       # select which files / folders to deploy
       # after the build successfully finished
@@ -45,6 +46,7 @@ zerops:
 
       # build your application
       buildCommands:
+        - cd taptaprace.client
         - npm ci
         - npm run build
 
