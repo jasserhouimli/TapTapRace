@@ -98,8 +98,3 @@ GET /api/TypeRace/rooms/{roomId}
 - For backend logic changes, add/update tests and consider concurrency implications.
 
 ---
-
-If you'd like, I can also:
-- Add language hints to more code blocks (e.g., `bash`, `http`) for better rendering.
-- Wrap additional snippets (e.g., SignalR method examples) in code blocks.
-
