@@ -1,6 +1,6 @@
 # TapTapRace
 
-TapTapRace is a simple multiplayer typing-race application. It provides an ASP.NET Core backend using SignalR to manage rooms, players, and real-time race synchronization. This README contains the essential information to run, understand, and deploy the project.
+TapTapRace is a simple multiplayer typing-race application. It provides an ASP.NET Core backend using SignalR to manage rooms, players, and real-time race synchronization. This README contains the essential information to run and understand the project.
 
 ## Quick overview
 - Backend: ASP.NET Core (C#) in `testbackend/`
@@ -29,25 +29,39 @@ From repository root:
 
 1. Restore and build
 
-   dotnet restore
-   dotnet build
+```bash
+dotnet restore
+dotnet build
+```
 
 2. Run the backend
 
-   dotnet run --project testbackend
+```bash
+dotnet run --project testbackend
+```
 
-The app serves static files from `testbackend/wwwroot` and maps the SignalR hub at `/typeracehub`. By default, it listens on the port configured by ASP.NET (commonly 5000 for HTTP). CORS is configured to allow any origin.
+The app serves static files from `testbackend/wwwroot` and maps the SignalR hub at `/typeracehub`. By default, it listens on the port configured by ASP.NET (commonly 5000 for HTTP). CORS is configured to allow the frontend to connect to the hub.
 
 Alternatively, publish and run the compiled output:
 
-   dotnet publish testbackend/testbackend.csproj -c Release -o app
-   dotnet app/testbackend.dll --environment Development
+```bash
+dotnet publish testbackend/testbackend.csproj -c Release -o app
+dotnet app/testbackend.dll --environment Development
+```
 
 ## REST API (read-only)
-- GET /api/TypeRace/rooms
-  - Returns list of rooms: `{ id, name, playerCount, gameState, isGameActive }`
-- GET /api/TypeRace/rooms/{roomId}
-  - Returns room details including players: `{ name, isReady, wordsPerMinute, accuracy, hasCompleted }`
+
+Example requests:
+
+```http
+GET /api/TypeRace/rooms
+```
+- Returns list of rooms: `{ id, name, playerCount, gameState, isGameActive }`
+
+```http
+GET /api/TypeRace/rooms/{roomId}
+```
+- Returns room details including players: `{ name, isReady, wordsPerMinute, accuracy, hasCompleted }`
 
 ## SignalR: hub methods (server-side) — call these from clients
 - CreateRoom(roomName, playerName)
@@ -77,10 +91,15 @@ Alternatively, publish and run the compiled output:
 - The server uses `ConcurrentDictionary` for thread-safe player management.
 
 ## Deployment
-`zerops.yml` shows a Zerops configuration that builds using `dotnet@9`, publishes the `testbackend` project to `app/`, and runs `dotnet testbackend.dll --environment Development`. The app exposes port `5000` and enables HTTP.
+`zerops.yml` shows a Zerops configuration that builds using `dotnet@9`, publishes the `testbackend` project to `app/`, and runs `dotnet testbackend.dll --environment Development`. The app exposes the configured HTTP port.
 
 ## Contributing
 - Fork the repo, create a branch, and open a pull request.
 - For backend logic changes, add/update tests and consider concurrency implications.
 
 ---
+
+If you'd like, I can also:
+- Add language hints to more code blocks (e.g., `bash`, `http`) for better rendering.
+- Wrap additional snippets (e.g., SignalR method examples) in code blocks.
+
