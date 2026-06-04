@@ -84,5 +84,3 @@ Alternatively, publish and run the compiled output:
 - For backend logic changes, add/update tests and consider concurrency implications.
 
 ---
-
-If you want, I can open a pull request that adds this README.md to the repository for you.
