@@ -36,7 +36,7 @@ namespace typerace.Hub
                     {
                         _roomService.RemoveRoom(room.Id);
                     }
-                    // If game is in progress, check if all remaining players have completed
+                    // If game is in progress, check if all remaining players have completed.
                     else if (room.GameState == GameState.InProgress)
                     {
                         CheckGameCompletion(room);
