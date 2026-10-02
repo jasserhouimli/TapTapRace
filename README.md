@@ -42,8 +42,6 @@ dotnet run --project testbackend
 
 The app serves static files from `testbackend/wwwroot` and maps the SignalR hub at `/typeracehub`. By default, it listens on the port configured by ASP.NET (commonly 5000 for HTTP). CORS is configured to allow the frontend to connect to the hub.
 
-Alternatively, publish and run the compiled output:
-
 ```bash
 dotnet publish testbackend/testbackend.csproj -c Release -o app
 dotnet app/testbackend.dll --environment Development
